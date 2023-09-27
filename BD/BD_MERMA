@@ -1,0 +1,31 @@
+DROP DATABASE IF EXISTS BD_MERMA;
+CREATE DATABASE BD_MERMA;
+USE BD_MERMA;
+
+
+CREATE TABLE Publicacion (
+	publicacion_id INT auto_increment primary KEY,
+    publicacion_nombre VARCHAR(255),
+    publicacion_contenido VARCHAR(255),
+    publicacion_fecha date
+);
+
+CREATE TABLE Etiqueta (
+    etiqueta_id INT auto_increment  PRIMARY KEY,
+    etiqueta_nombre VARCHAR(255),
+    etiqueta_fecha date,
+    publicacion_id INT ,
+    FOREIGN KEY (publicacion_id) REFERENCES Publicacion(publicacion_id)
+);
+
+CREATE TABLE Comentario (
+	comentario_id INT auto_increment PRIMARY KEY,
+    comentario_contenido VARCHAR(255),
+    comentario_fecha date,
+    publicacion_id INT,
+    FOREIGN KEY (publicacion_id) REFERENCES Publicacion(publicacion_id)
+);
+
+SELECT * FROM publicacion;
+select * from Etiqueta;
+Select * from Comentario;
